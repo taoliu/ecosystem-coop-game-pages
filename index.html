@@ -7,8 +7,8 @@
     <meta name="description" content="A small, living garden to tend with friends." />
     <link rel="icon" href="./assets/favicon-DJEZXVla.svg" type="image/svg+xml" />
     <title>Little Wilds — A garden that keeps growing</title>
-    <script type="module" crossorigin src="./assets/index-BYYUtJc6.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BLAfaysN.css">
+    <script type="module" crossorigin src="./assets/index-Sn_xQX2d.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DPSwqMzP.css">
   </head>
   <body>
     <div class="app-shell">
@@ -43,25 +43,27 @@
             <div class="scene-badge"><span class="live-dot"></span><span id="world-status">GROWING GENTLY</span></div>
           </div>
           <div class="scene-frame">
-            <canvas id="world-canvas" aria-label="Low-poly island garden with a pond, meadow, and wildlife"></canvas>
-            <div class="scene-fallback" id="scene-fallback" role="img" aria-label="A quiet garden with a pond, meadow, and wildlife" hidden>
+            <canvas id="world-canvas" tabindex="0" aria-label="Low-poly island garden. Drag or use arrow keys to explore; select a tool, then choose its habitat on the garden or with the habitat buttons below."></canvas>
+            <div class="scene-fallback" id="scene-fallback" role="status" hidden>
               <span aria-hidden="true">✿</span>
               <strong>This browser can’t show the 3D garden.</strong>
-              <p>The garden notes and actions still work. Try a browser with hardware acceleration enabled to see the island.</p>
+              <p>Choose a tool and use the habitat buttons below to tend the garden. Try a browser with hardware acceleration enabled to see the island.</p>
             </div>
             <div class="zoom-controls" aria-label="Garden zoom controls" hidden>
               <button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in">+</button>
               <output id="zoom-level" aria-live="polite">100%</output>
               <button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">−</button>
               <button id="zoom-reset" type="button" aria-label="Reset zoom" title="Reset zoom">↺</button>
+              <button id="view-home" type="button" aria-label="Home: reset the garden view" title="Home view">⌂</button>
             </div>
             <div class="scene-caption"><span class="caption-sun" aria-hidden="true">☼</span><span id="scene-caption">A quiet morning by the pond</span></div>
             <div class="scene-compass" aria-hidden="true"><span>N</span><i>✦</i></div>
-            <div class="scene-tooltip" id="scene-tooltip" aria-live="polite">Scroll to zoom · tap to tend</div>
+            <div class="scene-tooltip" id="scene-tooltip" aria-live="polite">Drag to explore · choose a tool + habitat · wheel or pinch to zoom</div>
           </div>
           <div class="scene-footnote">
             <span><i class="footnote-dot dot-meadow"></i> wildflower meadow</span>
             <span><i class="footnote-dot dot-pond"></i> willow pond</span>
+            <span><i class="footnote-dot dot-grove"></i> quiet grove</span>
             <span id="world-seed">GARDEN · A01</span>
           </div>
         </section>
@@ -88,6 +90,10 @@
               <div class="stat-meter blue-meter"><i id="pond-meter"></i></div>
             </div>
             <div class="gentle-note"><span aria-hidden="true">✿</span><p id="gentle-note">The garden has its own pace. There’s no rush.</p></div>
+            <section class="shared-log" aria-labelledby="log-heading">
+              <div class="log-heading"><p class="eyebrow">LITTLE DISCOVERIES</p><h3 id="log-heading">Garden journal</h3></div>
+              <ul id="shared-observations" aria-live="polite" aria-relevant="additions"></ul>
+            </section>
           </section>
 
           <section class="paper-card friends-card">
@@ -110,10 +116,17 @@
       <footer class="action-dock" aria-label="Garden actions">
         <div class="dock-intro"><span class="dock-sparkle" aria-hidden="true">✧</span><span><strong>Leave a little care</strong><small>Small things make a world.</small></span></div>
         <div class="action-buttons">
-          <button class="garden-action bloom-action" id="plant-button" type="button"><span class="action-icon" aria-hidden="true">✿</span><span><strong>Scatter seeds</strong><small>Invite a bloom</small></span></button>
-          <button class="garden-action pond-action" id="pond-button" type="button"><span class="action-icon" aria-hidden="true">◒</span><span><strong>Tend the pond</strong><small>Make room for life</small></span></button>
+          <button class="garden-action bloom-action" id="plant-button" type="button" aria-pressed="true"><span class="action-icon" aria-hidden="true">✿</span><span><strong>Scatter seeds</strong><small>Invite a bloom</small></span></button>
+          <button class="garden-action pond-action" id="pond-button" type="button" aria-pressed="false"><span class="action-icon" aria-hidden="true">◒</span><span><strong>Tend the pond</strong><small>Make room for life</small></span></button>
+          <button class="garden-action observe-action" id="observe-button" type="button" aria-pressed="false"><span class="action-icon" aria-hidden="true">⌕</span><span><strong>Observe wildlife</strong><small>Share a discovery</small></span></button>
         </div>
         <div class="dock-note"><span aria-hidden="true">☁</span> No tasks to catch up on.</div>
+        <div class="habitat-targets" role="group" aria-label="Choose a habitat for the selected tool">
+          <span>Use tool in</span>
+          <button type="button" data-area="meadow">Meadow</button>
+          <button type="button" data-area="pond">Pond</button>
+          <button type="button" data-area="grove">Grove</button>
+        </div>
       </footer>
       <div class="toast" id="toast" role="status" aria-live="polite"></div>
     </div>
