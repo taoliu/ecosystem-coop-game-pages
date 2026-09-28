@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#e9e9d9" />
+    <meta name="description" content="A small, living garden to tend with friends." />
+    <link rel="icon" href="./assets/favicon-DJEZXVla.svg" type="image/svg+xml" />
+    <title>Little Wilds — A garden that keeps growing</title>
+    <script type="module" crossorigin src="./assets/index-BfvCdr5O.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Bu-N0U9i.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#garden" aria-label="Little Wilds home">
+          <span class="brand-mark" aria-hidden="true">✳</span>
+          <span><strong>little wilds</strong><small>your shared garden</small></span>
+        </a>
+        <div class="world-clock" aria-live="polite">
+          <span class="weather-dot"></span>
+          <span id="season-label">SOFT SPRING</span>
+          <span class="clock-divider">/</span>
+          <span id="day-label">DAY 01</span>
+        </div>
+        <div class="top-actions">
+          <button class="quiet-button" id="invite-button" type="button">
+            <span aria-hidden="true">↗</span> Invite a friend
+          </button>
+          <div class="player-count" id="player-count" aria-label="1 player in garden">
+            <span class="avatar-dot">●</span><span id="player-count-text">1 here</span>
+          </div>
+        </div>
+      </header>
+
+      <main id="garden" class="garden-layout">
+        <section class="scene-column" aria-label="Shared garden scene">
+          <div class="scene-heading">
+            <div>
+              <p class="eyebrow">A LITTLE WORLD, TOGETHER</p>
+              <h1>Room to grow.</h1>
+            </div>
+            <div class="scene-badge"><span class="live-dot"></span><span id="world-status">GROWING GENTLY</span></div>
+          </div>
+          <div class="scene-frame">
+            <canvas id="world-canvas" aria-label="Low-poly island garden with a pond, meadow, and wildlife"></canvas>
+            <div class="scene-fallback" id="scene-fallback" role="img" aria-label="A quiet garden with a pond, meadow, and wildlife" hidden>
+              <span aria-hidden="true">✿</span>
+              <strong>This browser can’t show the 3D garden.</strong>
+              <p>The garden notes and actions still work. Try a browser with hardware acceleration enabled to see the island.</p>
+            </div>
+            <div class="scene-caption"><span class="caption-sun" aria-hidden="true">☼</span><span id="scene-caption">A quiet morning by the pond</span></div>
+            <div class="scene-compass" aria-hidden="true"><span>N</span><i>✦</i></div>
+            <div class="scene-tooltip" id="scene-tooltip" aria-live="polite">Tap the garden to leave a little care</div>
+          </div>
+          <div class="scene-footnote">
+            <span><i class="footnote-dot dot-meadow"></i> wildflower meadow</span>
+            <span><i class="footnote-dot dot-pond"></i> willow pond</span>
+            <span id="world-seed">GARDEN · A01</span>
+          </div>
+        </section>
+
+        <aside class="side-column" aria-label="Garden notes and friends">
+          <section class="paper-card ecology-card">
+            <div class="card-heading">
+              <div><p class="eyebrow">THE LIVING THINGS</p><h2>Doing just fine</h2></div>
+              <span class="leaf-stamp" aria-hidden="true">❧</span>
+            </div>
+            <div class="ecology-stat">
+              <div class="stat-copy"><span>Wildflowers</span><span class="stat-note" id="flower-note">little buds everywhere</span></div>
+              <strong id="flower-value">42</strong>
+              <div class="stat-meter"><i id="flower-meter"></i></div>
+            </div>
+            <div class="ecology-stat">
+              <div class="stat-copy"><span>Pollinators</span><span class="stat-note" id="bee-note">busy in the clover</span></div>
+              <strong id="bee-value">18</strong>
+              <div class="stat-meter honey-meter"><i id="bee-meter"></i></div>
+            </div>
+            <div class="ecology-stat">
+              <div class="stat-copy"><span>Pond life</span><span class="stat-note" id="pond-note">cool and clear</span></div>
+              <strong id="pond-value">11</strong>
+              <div class="stat-meter blue-meter"><i id="pond-meter"></i></div>
+            </div>
+            <div class="gentle-note"><span aria-hidden="true">✿</span><p id="gentle-note">The garden has its own pace. There’s no rush.</p></div>
+          </section>
+
+          <section class="paper-card friends-card">
+            <div class="card-heading compact-heading">
+              <div><p class="eyebrow">IN THE GARDEN</p><h2>Good company</h2></div>
+              <button class="text-button" id="copy-code" type="button" aria-label="Copy garden invite code">Copy code</button>
+            </div>
+            <div class="friend-list" id="friend-list">
+              <div class="friend-row"><span class="friend-avatar avatar-sage">T</span><span class="friend-name">You <small>garden keeper</small></span><span class="friend-presence">here</span></div>
+            </div>
+            <div class="invite-inline" id="invite-inline">
+              <label for="room-code">Have an invite?</label>
+              <div class="join-row"><input id="room-code" type="text" placeholder="paste garden code" autocomplete="off" maxlength="36" /><button id="join-button" type="button" aria-label="Join garden">Join</button></div>
+            </div>
+            <p class="connection-note" id="connection-note" aria-live="polite">This browser saves and catches up your garden while you’re away. Shared play needs the keeper online.</p>
+          </section>
+        </aside>
+      </main>
+
+      <footer class="action-dock" aria-label="Garden actions">
+        <div class="dock-intro"><span class="dock-sparkle" aria-hidden="true">✧</span><span><strong>Leave a little care</strong><small>Small things make a world.</small></span></div>
+        <div class="action-buttons">
+          <button class="garden-action bloom-action" id="plant-button" type="button"><span class="action-icon" aria-hidden="true">✿</span><span><strong>Scatter seeds</strong><small>Invite a bloom</small></span></button>
+          <button class="garden-action pond-action" id="pond-button" type="button"><span class="action-icon" aria-hidden="true">◒</span><span><strong>Tend the pond</strong><small>Make room for life</small></span></button>
+        </div>
+        <div class="dock-note"><span aria-hidden="true">☁</span> No tasks to catch up on.</div>
+      </footer>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+  </body>
+</html>
