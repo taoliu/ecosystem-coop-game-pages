@@ -7,8 +7,8 @@
     <meta name="description" content="A small, living garden to tend with friends." />
     <link rel="icon" href="./assets/favicon-DJEZXVla.svg" type="image/svg+xml" />
     <title>Little Wilds — A garden that keeps growing</title>
-    <script type="module" crossorigin src="./assets/index-BfvCdr5O.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Bu-N0U9i.css">
+    <script type="module" crossorigin src="./assets/index-BYYUtJc6.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BLAfaysN.css">
   </head>
   <body>
     <div class="app-shell">
@@ -49,9 +49,15 @@
               <strong>This browser can’t show the 3D garden.</strong>
               <p>The garden notes and actions still work. Try a browser with hardware acceleration enabled to see the island.</p>
             </div>
+            <div class="zoom-controls" aria-label="Garden zoom controls" hidden>
+              <button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in">+</button>
+              <output id="zoom-level" aria-live="polite">100%</output>
+              <button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">−</button>
+              <button id="zoom-reset" type="button" aria-label="Reset zoom" title="Reset zoom">↺</button>
+            </div>
             <div class="scene-caption"><span class="caption-sun" aria-hidden="true">☼</span><span id="scene-caption">A quiet morning by the pond</span></div>
             <div class="scene-compass" aria-hidden="true"><span>N</span><i>✦</i></div>
-            <div class="scene-tooltip" id="scene-tooltip" aria-live="polite">Tap the garden to leave a little care</div>
+            <div class="scene-tooltip" id="scene-tooltip" aria-live="polite">Scroll to zoom · tap to tend</div>
           </div>
           <div class="scene-footnote">
             <span><i class="footnote-dot dot-meadow"></i> wildflower meadow</span>
