@@ -3,132 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#e9e9d9" />
-    <meta name="description" content="A small, living garden to tend with friends." />
+    <meta name="theme-color" content="#e8eee2" />
+    <meta name="description" content="Explore and tend a small living pond ecosystem with friends." />
     <link rel="icon" href="./assets/favicon-DJEZXVla.svg" type="image/svg+xml" />
-    <title>Little Wilds — A garden that keeps growing</title>
-    <script type="module" crossorigin src="./assets/index-Sn_xQX2d.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DPSwqMzP.css">
+    <title>Pondkeeper — A Living Pond</title>
+    <script type="module" crossorigin src="./assets/index-CgHDrMBU.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CMTIqHYo.css">
   </head>
   <body>
-    <div class="app-shell">
+    <div id="app">
       <header class="topbar">
-        <a class="brand" href="#garden" aria-label="Little Wilds home">
-          <span class="brand-mark" aria-hidden="true">✳</span>
-          <span><strong>little wilds</strong><small>your shared garden</small></span>
-        </a>
-        <div class="world-clock" aria-live="polite">
-          <span class="weather-dot"></span>
-          <span id="season-label">SOFT SPRING</span>
-          <span class="clock-divider">/</span>
-          <span id="day-label">DAY 01</span>
-        </div>
-        <div class="top-actions">
-          <button class="quiet-button" id="invite-button" type="button">
-            <span aria-hidden="true">↗</span> Invite a friend
-          </button>
-          <div class="player-count" id="player-count" aria-label="1 player in garden">
-            <span class="avatar-dot">●</span><span id="player-count-text">1 here</span>
-          </div>
-        </div>
+        <a class="brand" href="#pond" aria-label="Pondkeeper home"><span class="brand-mark" aria-hidden="true">◉</span><span><strong>Pondkeeper</strong><small>A LITTLE WORLD, TOGETHER</small></span></a>
+        <div class="world-clock"><span id="world-status">LIVING POND</span><strong id="season-label">SPRING THAW</strong><span id="day-label">DAY 01</span></div>
+        <div class="top-actions"><div class="player-count" id="player-count" aria-label="1 player in pond"><span aria-hidden="true">●</span><span id="player-count-text">1 here</span></div><button class="quiet-button" id="invite-button" type="button">↗ Invite a friend</button></div>
       </header>
 
-      <main id="garden" class="garden-layout">
-        <section class="scene-column" aria-label="Shared garden scene">
-          <div class="scene-heading">
-            <div>
-              <p class="eyebrow">A LITTLE WORLD, TOGETHER</p>
-              <h1>Room to grow.</h1>
-            </div>
-            <div class="scene-badge"><span class="live-dot"></span><span id="world-status">GROWING GENTLY</span></div>
-          </div>
+      <main id="pond" class="main-layout">
+        <section class="pond-column" aria-label="Pond exploration">
+          <div class="section-heading"><div><p class="eyebrow">A SMALL ECOSYSTEM TO DISCOVER</p><h1>Take a closer look.</h1></div><span class="live-pill"><i></i> <span id="pond-mood">BALANCED</span></span></div>
           <div class="scene-frame">
-            <canvas id="world-canvas" tabindex="0" aria-label="Low-poly island garden. Drag or use arrow keys to explore; select a tool, then choose its habitat on the garden or with the habitat buttons below."></canvas>
-            <div class="scene-fallback" id="scene-fallback" role="status" hidden>
-              <span aria-hidden="true">✿</span>
-              <strong>This browser can’t show the 3D garden.</strong>
-              <p>Choose a tool and use the habitat buttons below to tend the garden. Try a browser with hardware acceleration enabled to see the island.</p>
-            </div>
-            <div class="zoom-controls" aria-label="Garden zoom controls" hidden>
-              <button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in">+</button>
-              <output id="zoom-level" aria-live="polite">100%</output>
-              <button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">−</button>
-              <button id="zoom-reset" type="button" aria-label="Reset zoom" title="Reset zoom">↺</button>
-              <button id="view-home" type="button" aria-label="Home: reset the garden view" title="Home view">⌂</button>
-            </div>
-            <div class="scene-caption"><span class="caption-sun" aria-hidden="true">☼</span><span id="scene-caption">A quiet morning by the pond</span></div>
-            <div class="scene-compass" aria-hidden="true"><span>N</span><i>✦</i></div>
-            <div class="scene-tooltip" id="scene-tooltip" aria-live="polite">Drag to explore · choose a tool + habitat · wheel or pinch to zoom</div>
+            <canvas id="world-canvas" tabindex="0" aria-label="Three-dimensional pond. Drag to orbit, right-drag to pan, scroll or pinch to zoom. Select a plant or animal to inspect it." ></canvas>
+            <div class="scene-fallback" id="scene-fallback" role="status" hidden><strong>This browser can’t show the 3D pond.</strong><p>Use the ecosystem panels and actions below. Try enabling hardware acceleration for the explorable view.</p></div>
+            <div class="zoom-controls" aria-label="Pond view controls" hidden><button id="zoom-in" type="button" aria-label="Zoom in">+</button><output id="zoom-level" aria-live="polite">100%</output><button id="zoom-out" type="button" aria-label="Zoom out">−</button><button id="zoom-reset" type="button" aria-label="Reset zoom">↺</button><button id="view-home" type="button" aria-label="Home view">⌂</button></div>
+            <div class="detail-level" id="detail-level" aria-live="polite">POND OVERVIEW</div>
+            <div class="scene-caption" id="scene-caption">A quiet spring morning</div>
+            <div class="scene-tooltip" id="scene-tooltip" aria-live="polite">Drag to orbit · right-drag to pan · tap life to inspect</div>
           </div>
-          <div class="scene-footnote">
-            <span><i class="footnote-dot dot-meadow"></i> wildflower meadow</span>
-            <span><i class="footnote-dot dot-pond"></i> willow pond</span>
-            <span><i class="footnote-dot dot-grove"></i> quiet grove</span>
-            <span id="world-seed">GARDEN · A01</span>
-          </div>
+          <div class="scene-footnote"><span>SHORELINE</span><span>SHALLOWS</span><span>OPEN WATER</span><span>BOTTOM</span></div>
+          <section class="action-dock" aria-label="Pond tools"><div class="dock-heading"><div><p class="eyebrow">POND TOOLS</p><h2>Make a gentle change</h2></div><span>No timers or wrong turns</span></div>
+            <div class="action-buttons">
+              <button class="garden-action" type="button" data-action="plantVegetation"><span aria-hidden="true">🌱</span><strong>Plant</strong><small>Water plants</small></button>
+              <button class="garden-action" type="button" data-action="harvestAlgae"><span aria-hidden="true">〰</span><strong>Skim</strong><small>Excess algae</small></button>
+              <button class="garden-action" type="button" data-action="addLeafLitter"><span aria-hidden="true">🍂</span><strong>Add leaves</strong><small>Feed decomposers</small></button>
+              <button class="garden-action" type="button" data-action="aerateWater"><span aria-hidden="true">◌</span><strong>Aerate</strong><small>Boost oxygen</small></button>
+              <button class="garden-action" type="button" data-action="addShelter"><span aria-hidden="true">⌂</span><strong>Shelter</strong><small>Hide young life</small></button>
+              <button class="garden-action" type="button" data-action="shadeWater"><span aria-hidden="true">☂</span><strong>Shade</strong><small>Cool the water</small></button>
+              <button class="garden-action" type="button" data-action="refreshWater"><span aria-hidden="true">♧</span><strong>Refresh</strong><small>Clear some water</small></button>
+            </div>
+          </section>
         </section>
 
-        <aside class="side-column" aria-label="Garden notes and friends">
-          <section class="paper-card ecology-card">
-            <div class="card-heading">
-              <div><p class="eyebrow">THE LIVING THINGS</p><h2>Doing just fine</h2></div>
-              <span class="leaf-stamp" aria-hidden="true">❧</span>
+        <aside class="side-column" aria-label="Pond ecosystem information">
+          <section class="paper-card inspect-card" aria-live="polite"><p class="eyebrow">FIELD NOTES · <span id="inspect-depth">OVERVIEW</span></p><h2 id="inspect-title">A pond in balance</h2><p id="inspect-copy">Zoom in and select a living detail to learn what it needs and what it supports.</p></section>
+          <section class="paper-card conditions-card"><div class="card-heading"><div><p class="eyebrow">WATER CONDITIONS</p><h2>What life feels</h2></div><button class="text-button" id="test-water" type="button">Test water</button></div>
+            <div class="condition-grid">
+              <div class="condition-item"><span>Temperature</span><strong><span id="temp-value">18.0</span>°C</strong><i><b id="temp-meter"></b></i></div>
+              <div class="condition-item"><span>Dissolved oxygen</span><strong><span id="oxygen-value">7.4</span> mg/L</strong><i><b id="oxygen-meter"></b></i></div>
+              <div class="condition-item"><span>Water clarity</span><strong><span id="clarity-value">72</span>%</strong><i><b id="clarity-meter"></b></i></div>
+              <div class="condition-item"><span>Nutrients</span><strong><span id="nutrient-value">34</span>%</strong><i><b id="nutrient-meter"></b></i></div>
             </div>
-            <div class="ecology-stat">
-              <div class="stat-copy"><span>Wildflowers</span><span class="stat-note" id="flower-note">little buds everywhere</span></div>
-              <strong id="flower-value">42</strong>
-              <div class="stat-meter"><i id="flower-meter"></i></div>
-            </div>
-            <div class="ecology-stat">
-              <div class="stat-copy"><span>Pollinators</span><span class="stat-note" id="bee-note">busy in the clover</span></div>
-              <strong id="bee-value">18</strong>
-              <div class="stat-meter honey-meter"><i id="bee-meter"></i></div>
-            </div>
-            <div class="ecology-stat">
-              <div class="stat-copy"><span>Pond life</span><span class="stat-note" id="pond-note">cool and clear</span></div>
-              <strong id="pond-value">11</strong>
-              <div class="stat-meter blue-meter"><i id="pond-meter"></i></div>
-            </div>
-            <div class="gentle-note"><span aria-hidden="true">✿</span><p id="gentle-note">The garden has its own pace. There’s no rush.</p></div>
-            <section class="shared-log" aria-labelledby="log-heading">
-              <div class="log-heading"><p class="eyebrow">LITTLE DISCOVERIES</p><h3 id="log-heading">Garden journal</h3></div>
-              <ul id="shared-observations" aria-live="polite" aria-relevant="additions"></ul>
-            </section>
           </section>
-
-          <section class="paper-card friends-card">
-            <div class="card-heading compact-heading">
-              <div><p class="eyebrow">IN THE GARDEN</p><h2>Good company</h2></div>
-              <button class="text-button" id="copy-code" type="button" aria-label="Copy garden invite code">Copy code</button>
-            </div>
-            <div class="friend-list" id="friend-list">
-              <div class="friend-row"><span class="friend-avatar avatar-sage">T</span><span class="friend-name">You <small>garden keeper</small></span><span class="friend-presence">here</span></div>
-            </div>
-            <div class="invite-inline" id="invite-inline">
-              <label for="room-code">Have an invite?</label>
-              <div class="join-row"><input id="room-code" type="text" placeholder="paste garden code" autocomplete="off" maxlength="36" /><button id="join-button" type="button" aria-label="Join garden">Join</button></div>
-            </div>
-            <p class="connection-note" id="connection-note" aria-live="polite">This browser saves and catches up your garden while you’re away. Shared play needs the keeper online.</p>
+          <section class="paper-card life-card"><div class="card-heading"><div><p class="eyebrow">THE FOOD WEB</p><h2>Who lives here</h2></div><span class="leaf-stamp" aria-hidden="true">❧</span></div>
+            <div class="life-grid">
+              <button class="life-chip" data-life="aquaticPlants"><span>🌿</span><span>Pond plants</span><strong id="life-aquaticPlants">48</strong></button>
+              <button class="life-chip" data-life="algae"><span>〰</span><span>Algae</span><strong id="life-algae">24</strong></button>
+              <button class="life-chip" data-life="zooplankton"><span>✧</span><span>Zooplankton</span><strong id="life-zooplankton">32</strong></button>
+              <button class="life-chip" data-life="snails"><span>🐚</span><span>Snails</span><strong id="life-snails">21</strong></button>
+              <button class="life-chip" data-life="insectLarvae"><span>〰</span><span>Insect larvae</span><strong id="life-insectLarvae">27</strong></button>
+              <button class="life-chip" data-life="tadpoles"><span>◉</span><span>Tadpoles</span><strong id="life-tadpoles">19</strong></button>
+              <button class="life-chip" data-life="smallFish"><span>🐟</span><span>Small fish</span><strong id="life-smallFish">13</strong></button>
+              <button class="life-chip" data-life="decomposers"><span>✿</span><span>Decomposers</span><strong id="life-decomposers">34</strong></button>
+            </div><p class="scale-note">Relative abundance · not individual counts</p>
           </section>
+          <section class="paper-card shared-log"><div class="log-heading"><p class="eyebrow">POND JOURNAL</p><h3>Recent changes</h3></div><ul id="shared-observations" aria-live="polite" aria-relevant="additions"></ul></section>
+          <section class="paper-card friends-card"><div class="card-heading compact-heading"><div><p class="eyebrow">IN THIS POND</p><h2>Good company</h2></div><button class="text-button" id="copy-code" type="button" aria-label="Copy active pond invite code" disabled>Copy code</button></div>
+            <div class="friend-list" id="friend-list"></div><div class="invite-inline"><label for="room-code">Have an invite?</label><div class="join-row"><input id="room-code" type="text" placeholder="paste pond code" autocomplete="off" maxlength="36"/><button id="join-button" type="button">Join</button></div></div>
+            <p class="connection-note" id="connection-note" aria-live="polite">This browser saves its pond locally. Shared play requires the keeper online.</p></section>
         </aside>
-      </main>
-
-      <footer class="action-dock" aria-label="Garden actions">
-        <div class="dock-intro"><span class="dock-sparkle" aria-hidden="true">✧</span><span><strong>Leave a little care</strong><small>Small things make a world.</small></span></div>
-        <div class="action-buttons">
-          <button class="garden-action bloom-action" id="plant-button" type="button" aria-pressed="true"><span class="action-icon" aria-hidden="true">✿</span><span><strong>Scatter seeds</strong><small>Invite a bloom</small></span></button>
-          <button class="garden-action pond-action" id="pond-button" type="button" aria-pressed="false"><span class="action-icon" aria-hidden="true">◒</span><span><strong>Tend the pond</strong><small>Make room for life</small></span></button>
-          <button class="garden-action observe-action" id="observe-button" type="button" aria-pressed="false"><span class="action-icon" aria-hidden="true">⌕</span><span><strong>Observe wildlife</strong><small>Share a discovery</small></span></button>
-        </div>
-        <div class="dock-note"><span aria-hidden="true">☁</span> No tasks to catch up on.</div>
-        <div class="habitat-targets" role="group" aria-label="Choose a habitat for the selected tool">
-          <span>Use tool in</span>
-          <button type="button" data-area="meadow">Meadow</button>
-          <button type="button" data-area="pond">Pond</button>
-          <button type="button" data-area="grove">Grove</button>
-        </div>
-      </footer>
-      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </main><div class="toast" id="toast" role="status" aria-live="polite"></div>
     </div>
   </body>
 </html>
